@@ -1,9 +1,13 @@
 package com.github.curriculeon;
 
+import org.junit.Assert;
+import sun.management.counter.StringCounter;
+
 import java.awt.*;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Leon on 2/4/2017.
@@ -26,42 +30,58 @@ public final class RandomUtils {
      * @return a random character between the specified min and max character range
      */
     public static Character createCharacter(char min, char max) {
-        return null;
+        return (char) ThreadLocalRandom.current().nextInt(min, max);
     }
 
     /**
      * @return a random double between the specified min and max numeric range
      */
     public static Float createFloat(float min, float max) {
-        return null;
+        return createDouble(min, max).floatValue();
     }
 
     /**
      * @return a random float between the specified min and max numeric range
      */
     public static Double createDouble(double min, double max) {
-        return null;
+
+        return ThreadLocalRandom.current().nextDouble(min, max);
     }
 
     /**
      * @return a random integer between the specified min and max numeric range
      */
     public static Integer createInteger(int min, int max) {
-        return null;
+
+        return ThreadLocalRandom.current().nextInt(min, max);
     }
 
     /**
      * @return a random long between the specified min and max numeric range
      */
     public static Long createLong(long min, long max) {
-        return null;
+
+        return ThreadLocalRandom.current().nextLong(min, max);
     }
 
     /**
      * @return a random string of the specified length containing characters in the specified range
      */
     public static String createString(char min, char max, int stringLength) {
-        return null;
+
+        String result = "";
+        //loop through stringlength number of times and give me a random character
+        int numberOfTimesLooped = 0;
+        while (numberOfTimesLooped < stringLength) {
+            // add random character to string
+            Character randomCharacter = (char) ThreadLocalRandom.current().nextInt(min, max);
+            result = randomCharacter + result;
+
+            numberOfTimesLooped = numberOfTimesLooped + 1;
+        }
+        // return string
+        return result;
+
     }
 
     /**
