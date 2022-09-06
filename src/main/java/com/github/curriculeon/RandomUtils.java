@@ -73,13 +73,13 @@ public final class RandomUtils {
         //loop through stringlength number of times and give me a random character
         int numberOfTimesLooped = 0;
         while (numberOfTimesLooped < stringLength) {
-            // add random character to string
+            // add random character to result
             Character randomCharacter = (char) ThreadLocalRandom.current().nextInt(min, max);
             result = randomCharacter + result;
 
             numberOfTimesLooped = numberOfTimesLooped + 1;
         }
-        // return string
+        // return result
         return result;
 
     }
@@ -88,7 +88,19 @@ public final class RandomUtils {
      * @return an array of random string objects of the specified length containing characters in the specified range
      */
     public static String[] createStrings(char min, char max, int stringLength, int stringCount) {
-        return null;
+        String[] result = new String[stringCount];
+        //loop through stringCount number of times and give me a random String
+        int numberOfTimesLooped = 0;
+        while (numberOfTimesLooped < stringCount) {
+            // add random string to result
+            String randomString = createString(min, max, stringLength);
+            result[numberOfTimesLooped] = randomString;
+            numberOfTimesLooped ++ ;
+        }
+
+        // return result
+        return result;
+
     }
 
     /**
