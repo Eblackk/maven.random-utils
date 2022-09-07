@@ -4,6 +4,12 @@ import org.junit.Assert;
 import sun.management.counter.StringCounter;
 
 import java.awt.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -95,7 +101,7 @@ public final class RandomUtils {
             // add random string to result
             String randomString = createString(min, max, stringLength);
             result[numberOfTimesLooped] = randomString;
-            numberOfTimesLooped ++ ;
+            numberOfTimesLooped++;
         }
 
         // return result
@@ -109,7 +115,19 @@ public final class RandomUtils {
      * @return a random Date value within the specified min and max year
      */
     public static Date createDate(Number minYear, Number maxYear) {
+        // loop through range(min,max) return random date within range
+        // add random date(number) to result
+        // return result
         return null;
+    }
+
+    public static Date parseDate(String date) {
+        try {
+            return new SimpleDateFormat("yyyy-MM-dd").parse(date);
+        } catch (ParseException e) {
+            return null;
+
+        }
     }
 
     /**
@@ -118,8 +136,22 @@ public final class RandomUtils {
      * @return random date between the specified `minDate` and `maxDate`
      */
     public static Date createDate(Date minDate, Date maxDate) {
-        return null;
+
+        int minYear = minDate.getYear();
+        int maxYear = maxDate.getYear();
+        int year = createInteger(minYear, maxYear);
+        int minMonth = minDate.getMonth();
+        int maxMonth = maxDate.getMonth();
+        int month = createInteger(minMonth, maxMonth);
+        int minDay = minDate.getDay();
+        int maxDay = maxDate.getDay();
+        int day = createInteger(minDay, maxDay);
+        String dateAsString = year + "-" + month + "-" + day;
+        Date date = parseDate(dateAsString);
+        return date;
     }
+
+
 
     /**
      * @param array     an array to select a random element from
