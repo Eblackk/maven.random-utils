@@ -115,9 +115,6 @@ public final class RandomUtils {
      * @return a random Date value within the specified min and max year
      */
     public static Date createDate(Number minYear, Number maxYear) {
-        // loop through range(min,max) return random date within range
-        // add random date(number) to result
-        // return result
         return null;
     }
 
@@ -159,7 +156,12 @@ public final class RandomUtils {
      * @return a randomly selected element from the specified array
      */
     public static <AnyType> AnyType selectElement(AnyType[] array) {
-        return null;
+        int minIndex = 0;
+        int maxIndex = array.length - 1;
+        int randomIndex = createInteger(minIndex, maxIndex);
+        AnyType randomElement = array[randomIndex];
+        // return a random element from the array
+        return randomElement;
     }
 
     /**
@@ -168,7 +170,13 @@ public final class RandomUtils {
      * @return a randomly selected element from the specified array
      */
     public static <AnyType> AnyType selectElement(List<AnyType> list) {
-        return null;
+        int minIndex = 0;
+        int maxIndex = list.size() - 1;
+        int randomIndex = createInteger(minIndex, maxIndex);
+        AnyType randomElement = list.get(randomIndex);
+        // return a random element from the array
+        return randomElement;
+
     }
 
     /**
